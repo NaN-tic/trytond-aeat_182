@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This file is part of aeat_182 module for Tryton.
+The COPYRIGHT file at the top level of this repository contains the full
+copyright notices and license terms. -->
+<tryton>
+    <data>
+
+        <record model="res.group" id="group_aeat_182_admin">
+            <field name="name">AEAT 182 Administration</field>
+        </record>
+        <record model="res.user-res.group" id="user_admin_group_aeat_182_admin">
+            <field name="user" ref="res.user_admin"/>
+            <field name="group" ref="group_aeat_182_admin"/>
+        </record>
+        <record model="res.user-res.group" id="user_trigger_group_aeat_182_admin">
+            <field name="user" ref="res.user_trigger"/>
+            <field name="group" ref="group_aeat_182_admin"/>
+        </record>
+
+        <record model="ir.ui.view" id="aeat_182_report_form_view">
+            <field name="model">aeat.182.report</field>
+            <field name="type">form</field>
+            <field name="name">report_form</field>
+        </record>
+        <record model="ir.ui.view" id="aeat_182_report_tree_view">
+            <field name="model">aeat.182.report</field>
+            <field name="type">tree</field>
+            <field name="name">report_tree</field>
+        </record>
+        <record model="ir.action.act_window" id="act_aeat_182_report">
+            <field name="name">AEAT 182 Report</field>
+            <field name="res_model">aeat.182.report</field>
+            <field name="search_value"></field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_aeat_182_report_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="aeat_182_report_tree_view"/>
+            <field name="act_window" ref="act_aeat_182_report"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_aeat_182_report_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="aeat_182_report_form_view"/>
+            <field name="act_window" ref="act_aeat_182_report"/>
+        </record>
+        <record model="ir.model.access" id="access_aeat_182_report">
+            <field name="model" search="[('model', '=', 'aeat.182.report')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_aeat_182_report_admin">
+            <field name="model" search="[('model', '=', 'aeat.182.report')]"/>
+            <field name="group" ref="group_aeat_182_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <!-- aeat.182.report.party -->
+        <record model="ir.ui.view" id="aeat_182_report_party_form_view">
+            <field name="model">aeat.182.report.party</field>
+            <field name="type">form</field>
+            <field name="name">report_party_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="aeat_182_report_party_tree_view">
+            <field name="model">aeat.182.report.party</field>
+            <field name="type">tree</field>
+            <field name="name">report_party_tree</field>
+        </record>
+
+        <record model="ir.action.act_window" id="act_aeat_182_report_party">
+            <field name="name">AEAT 182 Report Party</field>
+            <field name="res_model">aeat.182.report.party</field>
+            <field name="search_value"></field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_aeat_182_report_party_view1">
+            <field name="sequence" eval="10"/>
+            <field name="view" ref="aeat_182_report_party_tree_view"/>
+            <field name="act_window" ref="act_aeat_182_report_party"/>
+        </record>
+        <record model="ir.action.act_window.view" id="act_aeat_182_report_party_view2">
+            <field name="sequence" eval="20"/>
+            <field name="view" ref="aeat_182_report_party_form_view"/>
+            <field name="act_window" ref="act_aeat_182_report_party"/>
+        </record>
+
+<!--         <record model="ir.action.act_window" id="act_invoice_form_party"> -->
+<!--             <field name="name">Invoices</field> -->
+<!--             <field name="res_model">account.invoice</field> -->
+<!--             <field name="domain" -->
+<!--                 eval="[('aeat182_records.party', 'in', Eval('active_ids'))]" -->
+<!--                 pyson="1"/> -->
+<!--         </record> -->
+<!--         <record model="ir.action.keyword" -->
+<!--                 id="act_open_report_party_invoice_keyword1"> -->
+<!--             <field name="model">aeat.182.report.party,-1</field> -->
+<!--             <field name="keyword">form_relate</field> -->
+<!--             <field name="action" ref="act_invoice_form_party"/> -->
+<!--         </record> -->
+
+        <record model="ir.model.access" id="access_aeat_182_report_party">
+            <field name="model" search="[('model', '=', 'aeat.182.report.party')]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_delete" eval="False"/>
+        </record>
+        <record model="ir.model.access" id="access_aeat_182_report_party_admin">
+            <field name="model" search="[('model', '=', 'aeat.182.report.party')]"/>
+            <field name="group" ref="group_aeat_182_admin"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_delete" eval="True"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_aeat182">
+            <field name="model" search="[('model', '=', 'aeat.182.report')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_aeat_182_1">
+            <field name="domain"
+                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_aeat182"/>
+        </record>
+
+        <record model="ir.rule.group" id="rule_group_aeat182_party">
+            <field name="model"
+                search="[('model', '=', 'aeat.182.report.party')]"/>
+            <field name="global_p" eval="True"/>
+        </record>
+        <record model="ir.rule" id="rule_aeat_182_report_party_1">
+            <field name="domain"
+                eval="[('company', '=', Eval('user', {}).get('company', None))]"
+                pyson="1"/>
+            <field name="rule_group" ref="rule_group_aeat182_party"/>
+        </record>
+
+        <!-- Menus -->
+        <menuitem action="act_aeat_182_report" id="menu_aeat_182_report"
+            parent="account.menu_reporting" sequence="182"
+            name="AEAT 182 Report"/>
+        <menuitem action="act_aeat_182_report_party"
+            id="menu_aeat_182_report_party"
+            parent="menu_aeat_182_report" sequence="10"
+            name="AEAT 182 Party"/>
+    </data>
+</tryton>

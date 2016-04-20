@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This file is part of aeat_182 module for Tryton.
+The COPYRIGHT file at the top level of this repository contains the full
+copyright notices and license terms. -->
+<form string="AEAT 182 Report" col="6">
+    <label name="company"/>
+    <field name="company"/>
+    <label name="fiscalyear"/>
+    <field name="fiscalyear"/>
+    <label name="type"/>
+    <field name="type"/>
+    <label name="company_vat"/>
+    <field name="company_vat"/>
+    <label name="fiscalyear_code"/>
+    <field name="fiscalyear_code"/>
+    <label name="previous_number"/>
+    <field name="previous_number"/>
+    <label name="company_name"/>
+    <field name="company_name"/>
+    <label name="presentation"/>
+    <field name="presentation"/>
+    <label name="declarant_nature"/>
+    <field name="declarant_nature"/>
+    <label name="company_phone"/>
+    <field name="company_phone"/>
+    <label name="currency"/>
+    <field name="currency"/>
+    <label name="protected_heritage_vat"/>
+    <field name="protected_heritage_vat"/>
+    <label name="protected_heritage_name"/>
+    <field name="protected_heritage_name"/>
+    <newline/>
+    <label name="amount_of_donations"/>
+    <field name="amount_of_donations"/>
+    <label name="total_number_of_donor_records"/>
+    <field name="total_number_of_donor_records"/>
+    <label name="total_sheets"/>
+    <field name="total_sheets"/>
+    <notebook colspan="6">
+        <page string="Accounts" id="accounts">
+            <field name="accounts" colspan="6"/>
+        </page>
+        <page string="Deductions" id="deductions">
+            <label name="years_for_pluriannual_donation"/>
+            <field name="years_for_pluriannual_donation"/>
+            <label name="donation_amount_threshold"/>
+            <field name="donation_amount_threshold"/>
+            <newline/>
+            <label name="first_less_physical"/>
+            <field name="first_less_physical"/>
+            <label name="first_greater_physical"/>
+            <field name="first_greater_physical"/>
+            <label name="pluriannual_physical"/>
+            <field name="pluriannual_physical"/>
+            <newline/>
+            <label name="first_less_artificial"/>
+            <field name="first_less_artificial"/>
+            <label name="first_greater_artificial"/>
+            <field name="first_greater_artificial"/>
+            <label name="pluriannual_artificial"/>
+            <field name="pluriannual_artificial"/>
+        </page>
+        <page string="Report Parties" id="report_parties">
+            <field name="report_parties" colspan="6"/>
+        </page>
+    </notebook>
+    <group id="foot_lines" colspan="3">
+        <label name="date"/>
+        <field name="date"/>
+        <label name="contact_name"/>
+        <field name="contact_name"/>
+        <newline/>
+        <label name="state"/>
+        <field name="state"/>
+        <label name="file_"/>
+        <field name="file_"/>
+        <field name="filename" invisible="1"/>
+    </group>
+    <group id="buttons" colspan="3" col="4">
+        <button name="draft" string="Draft"/>
+        <button name="calculate" string="Calculate"/>
+        <button name="process" string="Process"/>
+        <button name="cancel" string="Cancel"/>
+    </group>
+</form>

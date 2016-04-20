@@ -1,0 +1,569 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "error:aeat.182.report:"
+msgid "Currency in AEAT 182 report \"%s\" must be Euro."
+msgstr "La moneda del informe AEAT 182 \"%s\" debe ser Euro."
+
+msgctxt "error:aeat.182.report:"
+msgid "Report must be unique by fiscalyear and company"
+msgstr "El informe debe ser único por ejercicio fiscal y compañía"
+
+msgctxt "field:aeat.182.report,accounts:"
+msgid "Accounts"
+msgstr "Cuentas contables"
+
+msgctxt "field:aeat.182.report,amount_of_donations:"
+msgid "Amount of donations"
+msgstr "Importe de los donativos"
+
+msgctxt "field:aeat.182.report,company:"
+msgid "Company"
+msgstr "Compañía"
+
+msgctxt "field:aeat.182.report,company_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:aeat.182.report,company_phone:"
+msgid "Phone"
+msgstr "Teléfono"
+
+msgctxt "field:aeat.182.report,company_vat:"
+msgid "VAT number"
+msgstr "NIF"
+
+msgctxt "field:aeat.182.report,contact_name:"
+msgid "Name And Surname Contact"
+msgstr "Nombre y apellido del contacto"
+
+msgctxt "field:aeat.182.report,create_date:"
+msgid "Create Date"
+msgstr "Fecha creación"
+
+msgctxt "field:aeat.182.report,create_uid:"
+msgid "Create User"
+msgstr "Usuario creación"
+
+msgctxt "field:aeat.182.report,currency:"
+msgid "Currency"
+msgstr "Moneda"
+
+msgctxt "field:aeat.182.report,currency_digits:"
+msgid "Currency Digits"
+msgstr "Decimales de la moneda"
+
+msgctxt "field:aeat.182.report,date:"
+msgid "Date"
+msgstr "Fecha"
+
+msgctxt "field:aeat.182.report,declarant_nature:"
+msgid "Nature of the Declarant"
+msgstr "Naturaleza del declarante"
+
+msgctxt "field:aeat.182.report,donation_amount_threshold:"
+msgid ""
+"Donation Amount Threshold for the Applying of the Second Scale of Deduction"
+msgstr ""
+"Umbral del importe de la donación para aplicar la segunda escala de la "
+"deducción"
+
+msgctxt "field:aeat.182.report,file_:"
+msgid "File"
+msgstr "Archivo"
+
+msgctxt "field:aeat.182.report,filename:"
+msgid "File Name"
+msgstr "Nombre del archivo"
+
+msgctxt "field:aeat.182.report,first_greater_artificial:"
+msgid ""
+"Deductible Percentage of First Donation of Greater Amount of Artificial "
+"Person"
+msgstr ""
+"Porcentaje deducible de primera donación de importe mayor de la persona "
+"jurídica"
+
+msgctxt "field:aeat.182.report,first_greater_physical:"
+msgid ""
+"Deductible Percentage of First Donation of Greater Amount of Physical Person"
+msgstr ""
+"Porcentaje deducible de primera donación de importe mayor de la persona "
+"física"
+
+msgctxt "field:aeat.182.report,first_less_artificial:"
+msgid ""
+"Deductible Percentage of First Donation of Less Amount of Artificial Person"
+msgstr ""
+"Porcentaje deducible de primera donación de importe menor de la persona "
+"jurídica"
+
+msgctxt "field:aeat.182.report,first_less_physical:"
+msgid ""
+"Deductible Percentage of First Donation of Less Amount of Physical Person"
+msgstr ""
+"Porcentaje deducible de primera donación de importe menor de la persona "
+"física"
+
+msgctxt "field:aeat.182.report,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Ejercicio fiscal"
+
+msgctxt "field:aeat.182.report,fiscalyear_code:"
+msgid "Fiscal Year Code"
+msgstr "Código del ejercicio fiscal"
+
+msgctxt "field:aeat.182.report,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:aeat.182.report,pluriannual_artificial:"
+msgid "Deductible Percentage of Pluriannual Donation of Artificial Person"
+msgstr "Porcentaje deducible de donación plurianual de la persona jurídica"
+
+msgctxt "field:aeat.182.report,pluriannual_physical:"
+msgid "Deductible Percentage of Pluriannual Donation of Physical Person"
+msgstr "Porcentaje deducible de donación plurianual de la persona física"
+
+msgctxt "field:aeat.182.report,presentation:"
+msgid "Presentation"
+msgstr "Presentación"
+
+msgctxt "field:aeat.182.report,previous_number:"
+msgid "Previous Declaration Number"
+msgstr "Número de declaración anterior"
+
+msgctxt "field:aeat.182.report,protected_heritage_name:"
+msgid "Protected Heritage Name"
+msgstr "Nombre del patrimonio protegido"
+
+msgctxt "field:aeat.182.report,protected_heritage_vat:"
+msgid "Protected Heritage VAT"
+msgstr "NIF del patrimonio protegido"
+
+msgctxt "field:aeat.182.report,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:aeat.182.report,report_parties:"
+msgid "Party Donations"
+msgstr "Donativos de tercero"
+
+msgctxt "field:aeat.182.report,state:"
+msgid "State"
+msgstr "Estado"
+
+msgctxt "field:aeat.182.report,total_number_of_donor_records:"
+msgid "Total number of donor records"
+msgstr "Número total de registros de donantes"
+
+msgctxt "field:aeat.182.report,total_sheets:"
+msgid "Total Sheets"
+msgstr "Total de hojas"
+
+msgctxt "field:aeat.182.report,type:"
+msgid "Type"
+msgstr "Tipo de declaración"
+
+msgctxt "field:aeat.182.report,write_date:"
+msgid "Write Date"
+msgstr "Fecha modificación"
+
+msgctxt "field:aeat.182.report,write_uid:"
+msgid "Write User"
+msgstr "Usuario modificación"
+
+msgctxt "field:aeat.182.report,years_for_pluriannual_donation:"
+msgid "Minimal Number of Years for Pluriannual Donation"
+msgstr "Mínimo número de años para donación plurianual"
+
+msgctxt "field:aeat.182.report.account,account:"
+msgid "Account"
+msgstr "Cuenta contable"
+
+msgctxt "field:aeat.182.report.account,create_date:"
+msgid "Create Date"
+msgstr "Fecha creación"
+
+msgctxt "field:aeat.182.report.account,create_uid:"
+msgid "Create User"
+msgstr "Usuario creación"
+
+msgctxt "field:aeat.182.report.account,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:aeat.182.report.account,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:aeat.182.report.account,report:"
+msgid "Report"
+msgstr "Informe"
+
+msgctxt "field:aeat.182.report.account,write_date:"
+msgid "Write Date"
+msgstr "Fecha modificación"
+
+msgctxt "field:aeat.182.report.account,write_uid:"
+msgid "Write User"
+msgstr "Usuario modificación"
+
+msgctxt "field:aeat.182.report.party,amount:"
+msgid "Amount"
+msgstr "Importe"
+
+msgctxt "field:aeat.182.report.party,company:"
+msgid "Company"
+msgstr "Compañía"
+
+msgctxt "field:aeat.182.report.party,company_vat:"
+msgid "Company VAT"
+msgstr "NIF Compañía"
+
+msgctxt "field:aeat.182.report.party,create_date:"
+msgid "Create Date"
+msgstr "Fecha creación"
+
+msgctxt "field:aeat.182.report.party,create_uid:"
+msgid "Create User"
+msgstr "Usuario creación"
+
+msgctxt "field:aeat.182.report.party,currency_digits:"
+msgid "Currency Digits"
+msgstr "Decimales de la moneda"
+
+msgctxt "field:aeat.182.report.party,deduction_autonomous_community:"
+msgid "Deduction Autonomous Community"
+msgstr "% Deducción de la Comunidad Autónoma"
+
+msgctxt "field:aeat.182.report.party,donation_in_kind:"
+msgid "Donation in kind"
+msgstr "Donativo en especie"
+
+msgctxt "field:aeat.182.report.party,exercise_of_the_revoked_donation:"
+msgid "Exercise of the revoked donation"
+msgstr "Ejercicio de la donación revocada"
+
+msgctxt "field:aeat.182.report.party,fiscalyear_code:"
+msgid "Fiscal Year"
+msgstr "Ejercicio fiscal"
+
+msgctxt "field:aeat.182.report.party,id:"
+msgid "ID"
+msgstr "ID"
+
+msgctxt "field:aeat.182.report.party,identification_of_good:"
+msgid "Identification of good"
+msgstr "Identificación del bien"
+
+msgctxt "field:aeat.182.report.party,key:"
+msgid "Key"
+msgstr "Clave"
+
+msgctxt "field:aeat.182.report.party,nature:"
+msgid "Nature"
+msgstr "Naturaleza"
+
+msgctxt "field:aeat.182.report.party,party_name:"
+msgid "Party Name"
+msgstr "Nombre del tercero"
+
+msgctxt "field:aeat.182.report.party,party_subdivision_code:"
+msgid "Party Subdivision Code"
+msgstr "Código de provincia del tercero"
+
+msgctxt "field:aeat.182.report.party,party_vat:"
+msgid "Party VAT"
+msgstr "NIF del tercero"
+
+msgctxt "field:aeat.182.report.party,percentage_deduction:"
+msgid "% Deduction"
+msgstr "% Deducción"
+
+msgctxt ""
+"field:aeat.182.report.party,percentage_deduction_autonomous_community:"
+msgid "Percentage Deduction Autonomous Community"
+msgstr "Porcentaje deducción por Comunidad Autónoma"
+
+msgctxt "field:aeat.182.report.party,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:aeat.182.report.party,report:"
+msgid "Report"
+msgstr "Informe"
+
+msgctxt "field:aeat.182.report.party,representative_nif:"
+msgid "Representative VAT"
+msgstr "NIF del representante"
+
+msgctxt "field:aeat.182.report.party,revocation:"
+msgid "Revocation"
+msgstr "Revocación"
+
+msgctxt "field:aeat.182.report.party,type_of_good:"
+msgid "Type of good"
+msgstr "Tipo de bien"
+
+msgctxt "field:aeat.182.report.party,write_date:"
+msgid "Write Date"
+msgstr "Fecha modificación"
+
+msgctxt "field:aeat.182.report.party,write_uid:"
+msgid "Write User"
+msgstr "Usuario modificación"
+
+msgctxt "help:aeat.182.report,fiscalyear_code:"
+msgid ""
+"The four digits of the calendar year the corresponding declaration is made."
+msgstr "Las cuatro cifras del año natural al que corresponda la declaración"
+
+msgctxt "model:aeat.182.report,name:"
+msgid "AEAT 182 Report"
+msgstr "Informe AEAT 182"
+
+msgctxt "model:aeat.182.report.account,name:"
+msgid "AEAT 182 Report Account"
+msgstr "Informe contable AEAT 182"
+
+msgctxt "model:aeat.182.report.party,name:"
+msgid "AEAT 182 Report Party"
+msgstr "Informe de tercero AEAT 182"
+
+msgctxt "model:ir.action,name:act_aeat_182_report"
+msgid "AEAT 182 Report"
+msgstr "Informe AEAT 182"
+
+msgctxt "model:ir.action,name:act_aeat_182_report_party"
+msgid "AEAT 182 Report Party"
+msgstr "Informe de tercero AEAT 182"
+
+msgctxt "model:ir.ui.menu,name:menu_aeat_182_report"
+msgid "AEAT 182 Report"
+msgstr "Informe AEAT 182"
+
+msgctxt "model:ir.ui.menu,name:menu_aeat_182_report_party"
+msgid "AEAT 182 Party"
+msgstr "Tercero AEAT 182"
+
+msgctxt "model:res.group,name:group_aeat_182_admin"
+msgid "AEAT 182 Administration"
+msgstr "Administración AEAT 182"
+
+msgctxt "selection:aeat.182.report,declarant_nature:"
+msgid "Foundation"
+msgstr "Fundación"
+
+msgctxt "selection:aeat.182.report,declarant_nature:"
+msgid "Non-profit Entity"
+msgstr "Entidad sin ánimo de lucro"
+
+msgctxt "selection:aeat.182.report,declarant_nature:"
+msgid "Protected Heritage"
+msgstr "Patrimonio protegido"
+
+msgctxt "selection:aeat.182.report,presentation:"
+msgid "Printed"
+msgstr "Impreso"
+
+msgctxt "selection:aeat.182.report,presentation:"
+msgid "Support"
+msgstr "Soporte"
+
+msgctxt "selection:aeat.182.report,state:"
+msgid "Calculated"
+msgstr "Calculado"
+
+msgctxt "selection:aeat.182.report,state:"
+msgid "Cancelled"
+msgstr "Cancelado"
+
+msgctxt "selection:aeat.182.report,state:"
+msgid "Done"
+msgstr "Realizado"
+
+msgctxt "selection:aeat.182.report,state:"
+msgid "Draft"
+msgstr "Borrador"
+
+msgctxt "selection:aeat.182.report,type:"
+msgid "Complementary"
+msgstr "Declaración complementaria"
+
+msgctxt "selection:aeat.182.report,type:"
+msgid "Normal"
+msgstr "Normal"
+
+msgctxt "selection:aeat.182.report,type:"
+msgid "Substitutive"
+msgstr "Declaración sustitutiva"
+
+msgctxt "selection:aeat.182.report.party,deduction_autonomous_community:"
+msgid ""
+msgstr ""
+
+msgctxt "selection:aeat.182.report.party,deduction_autonomous_community:"
+msgid "01. Andalucía"
+msgstr "01. Andalucía"
+
+msgctxt "selection:aeat.182.report.party,deduction_autonomous_community:"
+msgid "02. Aragón"
+msgstr "02. Aragón"
+
+msgctxt "selection:aeat.182.report.party,deduction_autonomous_community:"
+msgid "03. Principado de Asturias"
+msgstr "03. Principado de Asturias"
+
+msgctxt "selection:aeat.182.report.party,deduction_autonomous_community:"
+msgid "04. Illes Balears"
+msgstr "04. Illes Balears"
+
+msgctxt "selection:aeat.182.report.party,deduction_autonomous_community:"
+msgid "05. Canarias"
+msgstr "05. Canarias"
+
+msgctxt "selection:aeat.182.report.party,deduction_autonomous_community:"
+msgid "06. Cantabria"
+msgstr "06. Cantabria"
+
+msgctxt "selection:aeat.182.report.party,deduction_autonomous_community:"
+msgid "07. Castilla la Macha"
+msgstr "07. Castilla la Macha"
+
+msgctxt "selection:aeat.182.report.party,deduction_autonomous_community:"
+msgid "08. Castilla y León"
+msgstr "08. Castilla y León"
+
+msgctxt "selection:aeat.182.report.party,deduction_autonomous_community:"
+msgid "09. Catalunya"
+msgstr "09. Catalunya"
+
+msgctxt "selection:aeat.182.report.party,deduction_autonomous_community:"
+msgid "10. Extremadura"
+msgstr "10. Extremadura"
+
+msgctxt "selection:aeat.182.report.party,deduction_autonomous_community:"
+msgid "11. Galicia"
+msgstr "11. Galicia"
+
+msgctxt "selection:aeat.182.report.party,deduction_autonomous_community:"
+msgid "12. Comunidad de Madrid"
+msgstr "12. Comunidad de Madrid"
+
+msgctxt "selection:aeat.182.report.party,deduction_autonomous_community:"
+msgid "13. Región de Murcia"
+msgstr "13. Región de Murcia"
+
+msgctxt "selection:aeat.182.report.party,deduction_autonomous_community:"
+msgid "16. La Rioja"
+msgstr "16. La Rioja"
+
+msgctxt "selection:aeat.182.report.party,deduction_autonomous_community:"
+msgid "17. Comunidad Valenciana"
+msgstr "17. Comunidad Valenciana"
+
+msgctxt "selection:aeat.182.report.party,identification_of_good:"
+msgid ""
+msgstr ""
+
+msgctxt "selection:aeat.182.report.party,identification_of_good:"
+msgid "ISIN. transferable securities"
+msgstr "ISIN. Valores mobiliarios"
+
+msgctxt "selection:aeat.182.report.party,identification_of_good:"
+msgid "NCR. Real State"
+msgstr "NCR. Inmuebles"
+
+msgctxt "selection:aeat.182.report.party,key:"
+msgid ""
+"A. Donations not included in the priority activities or sponsorship programs"
+" established by Law on State Budget"
+msgstr ""
+"A. Donativos no incluidos en las actividades o programas prioritarios de "
+"mecenazgo establecidos por Ley de Presupuestos Generales del Estado"
+
+msgctxt "selection:aeat.182.report.party,key:"
+msgid ""
+"B. Donations included in activities or sponsorship priority programs "
+"identified by Law on State Budget"
+msgstr ""
+"B. Donativos incluidos en las actividades o programas prioritarios de "
+"mecenazgo señalados por Ley de Presupuestos Generales del Estado"
+
+msgctxt "selection:aeat.182.report.party,key:"
+msgid "C. Contribution to heritage disabled."
+msgstr "C. Aportación al patrimonio de discapacitados"
+
+msgctxt "selection:aeat.182.report.party,key:"
+msgid "D. Provision of heritage disabled"
+msgstr "D. Disposición del patrimonio de discapacitados"
+
+msgctxt "selection:aeat.182.report.party,nature:"
+msgid "[E]. Entity under the income allocation"
+msgstr "E. Entidad en régimen de atribución de rentas"
+
+msgctxt "selection:aeat.182.report.party,nature:"
+msgid "[F]. Physical person"
+msgstr "F. Persona física"
+
+msgctxt "selection:aeat.182.report.party,nature:"
+msgid "[J]. Artificial person"
+msgstr "J. Persona jurídica"
+
+msgctxt "selection:aeat.182.report.party,type_of_good:"
+msgid ""
+msgstr ""
+
+msgctxt "selection:aeat.182.report.party,type_of_good:"
+msgid "I. Property"
+msgstr "I. Inmueble"
+
+msgctxt "selection:aeat.182.report.party,type_of_good:"
+msgid "O. Other"
+msgstr "O. Otros"
+
+msgctxt "selection:aeat.182.report.party,type_of_good:"
+msgid "V. Transferable Securities"
+msgstr "V. Valores mobiliarios"
+
+msgctxt "view:aeat.182.report.party:"
+msgid "AEAT 182 Party"
+msgstr "Tercero AEAT 182"
+
+msgctxt "view:aeat.182.report.party:"
+msgid "AEAT 182 Report Parties"
+msgstr "Informe de terceros AEAT 182"
+
+msgctxt "view:aeat.182.report:"
+msgid "AEAT 182 Report"
+msgstr "Informe AEAT 182"
+
+msgctxt "view:aeat.182.report:"
+msgid "Accounts"
+msgstr "Cuentas contables"
+
+msgctxt "view:aeat.182.report:"
+msgid "Calculate"
+msgstr "Calcular"
+
+msgctxt "view:aeat.182.report:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "view:aeat.182.report:"
+msgid "Deductions"
+msgstr "Deducciones"
+
+msgctxt "view:aeat.182.report:"
+msgid "Draft"
+msgstr "Borrador"
+
+msgctxt "view:aeat.182.report:"
+msgid "Process"
+msgstr "Procesar"
+
+msgctxt "view:aeat.182.report:"
+msgid "Report Parties"
+msgstr "Informe de terceros"

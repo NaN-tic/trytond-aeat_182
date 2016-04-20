@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This file is part of aeat_182 module for Tryton.
+The COPYRIGHT file at the top level of this repository contains the full
+copyright notices and license terms. -->
+<tree string="AEAT 182 Report">
+    <field name="company"/>
+    <field name="fiscalyear"/>
+    <field name="state"/>
+    <field name="date" widget="date"/>
+    <field name="total_sheets"/>
+    <button name="draft" string="Draft" tree_invisible="1"/>
+    <button name="calculate" string="Calculate" tree_invisible="1"/>
+    <button name="process" string="Process" tree_invisible="1"/>
+    <button name="cancel" string="Cancel" tree_invisible="1"/>
+</tree>
