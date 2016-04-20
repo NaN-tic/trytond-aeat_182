@@ -1,5 +1,5 @@
-Installing trytonzz_aeat_182
-============================
+Installing trytond_aeat_182
+===========================
 
 Prerequisites
 -------------
@@ -10,7 +10,7 @@ Prerequisites
 Installation
 ------------
 
-Once you've downloaded and unpacked the trytonzz_aeat_182 source
+Once you've downloaded and unpacked the trytond_aeat_182 source
 release, enter the directory where the archive was unpacked, and run:
 
     python setup.py install
