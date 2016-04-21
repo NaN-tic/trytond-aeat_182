@@ -108,11 +108,25 @@ Create First Year Move Line Donations::
     >>> move.date = period1.start_date
     >>> line = move.lines.new()
     >>> line.account = revenue
-    >>> line.credit = Decimal(100)
+    >>> line.credit = Decimal(50)
     >>> line.party = party
     >>> line = move.lines.new()
     >>> line.account = receivable
-    >>> line.debit = Decimal(100)
+    >>> line.debit = Decimal(50)
+    >>> line.party = party
+    >>> move.save()
+
+    >>> move = Move()
+    >>> move.period = period1
+    >>> move.journal = journal_revenue
+    >>> move.date = period1.start_date
+    >>> line = move.lines.new()
+    >>> line.account = revenue
+    >>> line.credit = Decimal(50)
+    >>> line.party = party
+    >>> line = move.lines.new()
+    >>> line.account = receivable
+    >>> line.debit = Decimal(50)
     >>> line.party = party
     >>> move.save()
 
@@ -155,14 +169,6 @@ Generate First Year 182 Report::
     >>> report.presentation = 'printed'
     >>> report.declarant_nature = 'non_profit_entity'
     >>> report.type = 'N'
-    >>> report.years_for_pluriannual_donation = 3
-    >>> report.donation_amount_threshold = Decimal('150')
-    >>> report.first_less_physical = Decimal('75')
-    >>> report.first_greater_physical = Decimal('30')
-    >>> report.pluriannual_physical = Decimal('35')
-    >>> report.first_less_artificial = Decimal('35')
-    >>> report.first_greater_artificial = Decimal('35')
-    >>> report.pluriannual_artificial = Decimal('40')
     >>> report.accounts.append(revenue)
     >>> report.click('calculate')
     >>> report.reload()
@@ -172,7 +178,7 @@ Generate First Year 182 Report::
     Decimal('450')
     >>> report_party, = ReportParty.find([
     ...         ('party_vat', '=', 'ES00000001R'),
-    ...         ('fiscalyear_code', '=', report.fiscalyear_code),
+    ...         ('report', '=', report.id),
     ...         ])
     >>> report_party.amount
     Decimal('100')
@@ -180,7 +186,7 @@ Generate First Year 182 Report::
     Decimal('75')
     >>> report_party, = ReportParty.find([
     ...         ('party_vat', '=', 'ES00000002W'),
-    ...         ('fiscalyear_code', '=', report.fiscalyear_code),
+    ...         ('report', '=', report.id),
     ...         ])
     >>> report_party.amount
     Decimal('100')
@@ -242,14 +248,6 @@ Generate Second Year 182 Report::
     >>> report.presentation = 'printed'
     >>> report.declarant_nature = 'non_profit_entity'
     >>> report.type = 'N'
-    >>> report.years_for_pluriannual_donation = 3
-    >>> report.donation_amount_threshold = Decimal('150')
-    >>> report.first_less_physical = Decimal('75')
-    >>> report.first_greater_physical = Decimal('30')
-    >>> report.pluriannual_physical = Decimal('35')
-    >>> report.first_less_artificial = Decimal('35')
-    >>> report.first_greater_artificial = Decimal('35')
-    >>> report.pluriannual_artificial = Decimal('40')
     >>> report.accounts.append(revenue)
     >>> report.click('calculate')
     >>> report.reload()
@@ -259,7 +257,7 @@ Generate Second Year 182 Report::
     Decimal('460')
     >>> report_party, = ReportParty.find([
     ...         ('party_vat', '=', 'ES00000001R'),
-    ...         ('fiscalyear_code', '=', report.fiscalyear_code),
+    ...         ('report', '=', report.id),
     ...         ])
     >>> report_party.amount
     Decimal('160')
@@ -267,7 +265,7 @@ Generate Second Year 182 Report::
     Decimal('30')
     >>> report_party, = ReportParty.find([
     ...         ('party_vat', '=', 'ES00000002W'),
-    ...         ('fiscalyear_code', '=', report.fiscalyear_code),
+    ...         ('report', '=', report.id),
     ...         ])
     >>> report_party.amount
     Decimal('100')
@@ -328,14 +326,6 @@ Generate Third Year 182 Report::
     >>> report.presentation = 'printed'
     >>> report.declarant_nature = 'non_profit_entity'
     >>> report.type = 'N'
-    >>> report.years_for_pluriannual_donation = 3
-    >>> report.donation_amount_threshold = Decimal('150')
-    >>> report.first_less_physical = Decimal('75')
-    >>> report.first_greater_physical = Decimal('30')
-    >>> report.pluriannual_physical = Decimal('35')
-    >>> report.first_less_artificial = Decimal('35')
-    >>> report.first_greater_artificial = Decimal('35')
-    >>> report.pluriannual_artificial = Decimal('40')
     >>> report.accounts.append(revenue)
     >>> report.click('calculate')
     >>> report.reload()
@@ -345,7 +335,7 @@ Generate Third Year 182 Report::
     Decimal('460')
     >>> report_party, = ReportParty.find([
     ...         ('party_vat', '=', 'ES00000001R'),
-    ...         ('fiscalyear_code', '=', report.fiscalyear_code),
+    ...         ('report', '=', report.id),
     ...         ])
     >>> report_party.amount
     Decimal('160')
@@ -353,7 +343,7 @@ Generate Third Year 182 Report::
     Decimal('35')
     >>> report_party, = ReportParty.find([
     ...         ('party_vat', '=', 'ES00000002W'),
-    ...         ('fiscalyear_code', '=', report.fiscalyear_code),
+    ...         ('report', '=', report.id),
     ...         ])
     >>> report_party.amount
     Decimal('100')
@@ -361,7 +351,7 @@ Generate Third Year 182 Report::
     Decimal('40')
     >>> report_party, = ReportParty.find([
     ...         ('party_vat', '=', 'ES00000003A'),
-    ...         ('fiscalyear_code', '=', report.fiscalyear_code),
+    ...         ('report', '=', report.id),
     ...         ])
     >>> report_party.amount
     Decimal('200')
