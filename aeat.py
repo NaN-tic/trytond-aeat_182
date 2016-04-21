@@ -360,20 +360,25 @@ class Report(Workflow, ModelSQL, ModelView):
             self.company_phone = phone or ''
 
     def pluriannual_applicable(self, report_party):
+        ReportParty = Pool().get('aeat.182.report.party')
+
         previous_years = []
-        number_of_previous_years = self.years_for_pluriannual_donation - 1
-        for count in range(number_of_previous_years):
-            year = report_party['fiscalyear_code'] - (count + 1)
+        number_of_previous_years = self.periods_for_pluriannual_donation
+        year = self.fiscalyear_code
+        for _ in range(number_of_previous_years):
+            year -= 1
             previous_years.append(year)
+
         report_parties = ReportParty.search([
                 ('party_vat', '=', report_party['party_vat']),
-                ('fiscalyear_code', 'in', previous_years)
+                ('report.fiscalyear_code', 'in', previous_years)
                 ])
-        applicable = len(report_parties) == number_of_previous_years
+        applicable = (len({r.report for r in report_parties}) ==
+            number_of_previous_years)
         if applicable:
             amount = report_party['amount']
             for r_party in sorted(report_parties,
-                    key=lambda x: x.fiscalyear_code,
+                    key=lambda x: x.report.fiscalyear_code,
                     reverse=True):
                 applicable &= r_party.amount <= amount
                 amount = r_party.amount
@@ -539,10 +544,6 @@ class ReportParty(ModelSQL, ModelView):
     report = fields.Many2One('aeat.182.report', 'Report', required=True,
         ondelete='CASCADE')
     company = fields.Function(fields.Many2One('company.company', 'Company'),
-        'get_report_field', searcher='search_report_field')
-    company_vat = fields.Function(fields.Char('Company VAT'),
-        'get_report_field', searcher='search_report_field')
-    fiscalyear_code = fields.Function(fields.Integer('Fiscal Year'),
         'get_report_field', searcher='search_report_field')
     party_vat = fields.Char('Party VAT')
     representative_nif = fields.Char('Representative VAT')
