@@ -379,6 +379,13 @@ class Report(Workflow, ModelSQL, ModelView):
                 amount = r_party.amount
         return applicable
 
+    @property
+    def map_subdivision_code(self):
+        pool = Pool()
+        Zip = pool.get('country.zip')
+        zips = Zip.search([])
+        return {(z.country.id, z.subdivision.id): z.zip[:2] for z in zips}
+
     def get_report_parties(self, fiscalyear):
         pool = Pool()
         MoveLine = pool.get('account.move.line')
@@ -419,13 +426,17 @@ class Report(Workflow, ModelSQL, ModelView):
         cursor.execute(*query)
         report_parties = []
         report_id = self.id
-        companty_id = self.company.id
-        fiscalyear_code = self.fiscalyear_code
+        company_id = self.company.id
         for record in cursor.fetchall():
             party = Party(record[0])
             address = party.address_get()
-            subdivision_code = (address and address.subdivision
-                    and address.subdivision.code or None)
+            subdivision_code = None
+            if address:
+                country = address.country or None
+                subdivision = address.subdivision or None
+                if subdivision and country:
+                    subdivision_code = self.map_subdivision_code[
+                        (country.id, subdivision.id)]
             report_party = {
                 'party_vat': party.vat_code,
                 'party_name': party.name,
@@ -434,8 +445,7 @@ class Report(Workflow, ModelSQL, ModelView):
                 'amount': record[1],
                 'key': 'A',
                 'report': report_id,
-                'company': companty_id,
-                'fiscalyear_code': fiscalyear_code,
+                'company': company_id,
                 }
             report_parties.append(report_party)
         return report_parties
