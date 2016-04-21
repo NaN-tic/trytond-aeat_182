@@ -4,12 +4,10 @@ The COPYRIGHT file at the top level of this repository contains the full
 copyright notices and license terms. -->
 <tree string="AEAT 182 Report Parties">
     <field name="report"/>
-    <field name="fiscalyear_code"/>
     <field name="party_vat"/>
     <field name="party_name"/>
     <field name="nature"/>
     <field name="party_subdivision_code"/>
     <field name="amount"/>
-    <field name="deduction_autonomous_community"/>
-    <field name="percentage_deduction_autonomous_community"/>
+    <field name="percentage_deduction"/>
 </tree>

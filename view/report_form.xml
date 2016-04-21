@@ -41,24 +41,42 @@ copyright notices and license terms. -->
             <field name="accounts" colspan="6"/>
         </page>
         <page string="Deductions" id="deductions">
-            <label name="years_for_pluriannual_donation"/>
-            <field name="years_for_pluriannual_donation"/>
+            <label name="periods_for_pluriannual_donation"/>
+            <field name="periods_for_pluriannual_donation"/>
             <label name="donation_amount_threshold"/>
             <field name="donation_amount_threshold"/>
             <newline/>
             <label name="first_less_physical"/>
-            <field name="first_less_physical"/>
+            <group id="first_less_physical" colspan="1" col="2">
+                <field name="first_less_physical" xexpand="0"/>
+                <label name="first_less_physical" string="%" xalign="0.0" xexpand="1"/>
+            </group>
             <label name="first_greater_physical"/>
-            <field name="first_greater_physical"/>
+            <group id="first_greater_physical" colspan="1" col="2">
+                <field name="first_greater_physical" xexpand="0"/>
+                <label name="first_greater_physical" string="%" xalign="0.0" xexpand="1"/>
+            </group>
             <label name="pluriannual_physical"/>
-            <field name="pluriannual_physical"/>
+            <group id="pluriannual_physical" colspan="1" col="2">
+                <field name="pluriannual_physical" xexpand="0"/>
+                <label name="pluriannual_physical" string="%" xalign="0.0" xexpand="1"/>
+            </group>
             <newline/>
             <label name="first_less_artificial"/>
-            <field name="first_less_artificial"/>
+            <group id="first_less_artificial" colspan="1" col="2">
+                <field name="first_less_artificial" xexpand="0"/>
+                <label name="first_less_artificial" string="%" xalign="0.0" xexpand="1"/>
+            </group>
             <label name="first_greater_artificial"/>
-            <field name="first_greater_artificial"/>
+            <group id="first_greater_artificial" colspan="1" col="2">
+                <field name="first_greater_artificial" xexpand="0"/>
+                <label name="first_greater_artificial" string="%" xalign="0.0" xexpand="1"/>
+            </group>
             <label name="pluriannual_artificial"/>
-            <field name="pluriannual_artificial"/>
+            <group id="pluriannual_artificial" colspan="1" col="2">
+                <field name="pluriannual_artificial" xexpand="0"/>
+                <label name="pluriannual_artificial" string="%" xalign="0.0" xexpand="1"/>
+            </group>
         </page>
         <page string="Report Parties" id="report_parties">
             <field name="report_parties" colspan="6"/>

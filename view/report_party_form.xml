@@ -5,10 +5,6 @@ copyright notices and license terms. -->
 <form string="AEAT 182 Party">
     <label name="report"/>
     <field name="report" colspan="3"/>
-    <label name="company_vat"/>
-    <field name="company_vat"/>
-    <label name="fiscalyear_code"/>
-    <field name="fiscalyear_code"/>
     <label name="party_vat"/>
     <field name="party_vat"/>
     <label name="representative_nif"/>
@@ -22,23 +18,29 @@ copyright notices and license terms. -->
     <label name="key"/>
     <field name="key"/>
     <label name="percentage_deduction"/>
-    <field name="percentage_deduction"/>
-    <label name="currency_digits"/>
-    <field name="currency_digits"/>
+    <group id="percentage_deduction" colspan="1" col="2">
+        <field name="percentage_deduction" xexpand="0"/>
+        <label name="percentage_deduction" string="%" xalign="0.0" xexpand="1"/>
+    </group>
     <label name="amount" colspan="3"/>
     <field name="amount"/>
     <label name="donation_in_kind"/>
     <field name="donation_in_kind"/>
+    <group id="donation_in_kind" colspan="2" col="4">
+        <label name="type_of_good"/>
+        <field name="type_of_good"/>
+        <label name="identification_of_good"/>
+        <field name="identification_of_good"/>
+    </group>
+    <label name="revocation"/>
+    <field name="revocation"/>
+    <label name="exercise_of_the_revoked_donation"/>
+    <field name="exercise_of_the_revoked_donation"/>
     <label name="deduction_autonomous_community"/>
     <field name="deduction_autonomous_community"/>
     <label name="percentage_deduction_autonomous_community"/>
-    <field name="percentage_deduction_autonomous_community"/>
-    <label name="revocation"/>
-    <field name="revocation"/>
-    <label name="exercise_of_the_revoked_donation" colspan="3"/>
-    <field name="exercise_of_the_revoked_donation"/>
-    <label name="type_of_good"/>
-    <field name="type_of_good"/>
-    <label name="identification_of_good"/>
-    <field name="identification_of_good"/>
+    <group id="percentage_deduction_autonomous_community" colspan="1" col="2">
+        <field name="percentage_deduction_autonomous_community" xexpand="0"/>
+        <label name="percentage_deduction_autonomous_community" string="%" xalign="0.0" xexpand="1"/>
+    </group>
 </form>
