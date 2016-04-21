@@ -20,7 +20,7 @@ msgstr "Importe de los donativos"
 
 msgctxt "field:aeat.182.report,company:"
 msgid "Company"
-msgstr "Compañía"
+msgstr "Empresa"
 
 msgctxt "field:aeat.182.report,company_name:"
 msgid "Name"
@@ -118,6 +118,10 @@ msgctxt "field:aeat.182.report,id:"
 msgid "ID"
 msgstr "ID"
 
+msgctxt "field:aeat.182.report,periods_for_pluriannual_donation:"
+msgid "Immediately Preceding Tax Periods for Pluriannual Donation"
+msgstr "Períodos impositivos inmediatos anteriores para donación plurianual"
+
 msgctxt "field:aeat.182.report,pluriannual_artificial:"
 msgid "Deductible Percentage of Pluriannual Donation of Artificial Person"
 msgstr "Porcentaje deducible de donación plurianual de la persona jurídica"
@@ -174,10 +178,6 @@ msgctxt "field:aeat.182.report,write_uid:"
 msgid "Write User"
 msgstr "Usuario modificación"
 
-msgctxt "field:aeat.182.report,years_for_pluriannual_donation:"
-msgid "Minimal Number of Years for Pluriannual Donation"
-msgstr "Mínimo número de años para donación plurianual"
-
 msgctxt "field:aeat.182.report.account,account:"
 msgid "Account"
 msgstr "Cuenta contable"
@@ -216,11 +216,7 @@ msgstr "Importe"
 
 msgctxt "field:aeat.182.report.party,company:"
 msgid "Company"
-msgstr "Compañía"
-
-msgctxt "field:aeat.182.report.party,company_vat:"
-msgid "Company VAT"
-msgstr "NIF Compañía"
+msgstr "Empresa"
 
 msgctxt "field:aeat.182.report.party,create_date:"
 msgid "Create Date"
@@ -235,8 +231,8 @@ msgid "Currency Digits"
 msgstr "Decimales de la moneda"
 
 msgctxt "field:aeat.182.report.party,deduction_autonomous_community:"
-msgid "Deduction Autonomous Community"
-msgstr "% Deducción de la Comunidad Autónoma"
+msgid "Percentage Deduction Autonomous Community"
+msgstr "Porcentaje Deducción de la Comunidad Autónoma"
 
 msgctxt "field:aeat.182.report.party,donation_in_kind:"
 msgid "Donation in kind"
@@ -245,10 +241,6 @@ msgstr "Donativo en especie"
 msgctxt "field:aeat.182.report.party,exercise_of_the_revoked_donation:"
 msgid "Exercise of the revoked donation"
 msgstr "Ejercicio de la donación revocada"
-
-msgctxt "field:aeat.182.report.party,fiscalyear_code:"
-msgid "Fiscal Year"
-msgstr "Ejercicio fiscal"
 
 msgctxt "field:aeat.182.report.party,id:"
 msgid "ID"
@@ -279,13 +271,13 @@ msgid "Party VAT"
 msgstr "NIF del tercero"
 
 msgctxt "field:aeat.182.report.party,percentage_deduction:"
-msgid "% Deduction"
-msgstr "% Deducción"
+msgid "Deduction"
+msgstr "Deducción"
 
 msgctxt ""
 "field:aeat.182.report.party,percentage_deduction_autonomous_community:"
-msgid "Percentage Deduction Autonomous Community"
-msgstr "Porcentaje deducción por Comunidad Autónoma"
+msgid "Deduction Autonomous Community"
+msgstr "Deducción por Comunidad Autónoma"
 
 msgctxt "field:aeat.182.report.party,rec_name:"
 msgid "Name"
@@ -529,12 +521,20 @@ msgid "V. Transferable Securities"
 msgstr "V. Valores mobiliarios"
 
 msgctxt "view:aeat.182.report.party:"
+msgid "%"
+msgstr "%"
+
+msgctxt "view:aeat.182.report.party:"
 msgid "AEAT 182 Party"
 msgstr "Tercero AEAT 182"
 
 msgctxt "view:aeat.182.report.party:"
 msgid "AEAT 182 Report Parties"
 msgstr "Informe de terceros AEAT 182"
+
+msgctxt "view:aeat.182.report:"
+msgid "%"
+msgstr "%"
 
 msgctxt "view:aeat.182.report:"
 msgid "AEAT 182 Report"
