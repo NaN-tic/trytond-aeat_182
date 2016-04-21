@@ -286,6 +286,38 @@ class Report(Workflow, ModelSQL, ModelView):
     def default_state():
         return 'draft'
 
+    @staticmethod
+    def default_periods_for_pluriannual_donation():
+        return 2
+
+    @staticmethod
+    def default_donation_amount_threshold():
+        return Decimal('150')
+
+    @staticmethod
+    def default_first_less_physical():
+        return Decimal('75')
+
+    @staticmethod
+    def default_first_greater_physical():
+        return Decimal('30')
+
+    @staticmethod
+    def default_pluriannual_physical():
+        return Decimal('35')
+
+    @staticmethod
+    def default_first_less_artificial():
+        return Decimal('35')
+
+    @staticmethod
+    def default_first_greater_artificial():
+        return Decimal('35')
+
+    @staticmethod
+    def default_pluriannual_artificial():
+        return Decimal('40')
+
     def get_rec_name(self, name):
         return '%s - %s' % (self.company.rec_name, self.fiscalyear.name)
 
