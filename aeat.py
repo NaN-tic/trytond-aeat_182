@@ -176,8 +176,8 @@ class Report(Workflow, ModelSQL, ModelView):
         'get_filename')
     accounts = fields.Many2Many('aeat.182.report.account', 'report', 'account',
         'Accounts')
-    years_for_pluriannual_donation = fields.Integer(
-        'Minimal Number of Years for Pluriannual Donation')
+    periods_for_pluriannual_donation = fields.Integer(
+        'Immediately Preceding Tax Periods for Pluriannual Donation')
     donation_amount_threshold = fields.Numeric('Donation Amount Threshold for '
         'the Applying of the Second Scale of Deduction',
         digits=(16, Eval('currency_digits', 2)), depends=['currency_digits'])
@@ -559,15 +559,15 @@ class ReportParty(ModelSQL, ModelView):
             })
     currency_digits = fields.Function(fields.Integer('Currency Digits'),
             'get_currency_digits')
-    percentage_deduction = fields.Numeric('% Deduction',
+    percentage_deduction = fields.Numeric('Deduction',
         digits=(16, Eval('currency_digits', 2)), depends=['currency_digits'])
     amount = fields.Numeric('Amount', digits=(16, Eval('currency_digits', 2)),
         required=True, depends=['currency_digits'])
     donation_in_kind = fields.Boolean('Donation in kind')
     deduction_autonomous_community = fields.Selection(AUTONOMOUS_COMUNITY,
-        'Deduction Autonomous Community')
+        'Percentage Deduction Autonomous Community')
     percentage_deduction_autonomous_community = fields.Numeric(
-        'Percentage Deduction Autonomous Community', digits=(14, 10),
+        'Deduction Autonomous Community', digits=(14, 10),
         states={
             'required': Bool(Eval('deduction_autonomous_community')),
             'invisible': Not(Bool(Eval('deduction_autonomous_community'))),
