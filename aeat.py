@@ -398,7 +398,7 @@ class Report(Workflow, ModelSQL, ModelView):
         Account = pool.get('account.account')
         Move = pool.get('account.move')
         Period = pool.get('account.period')
-        cursor = Transaction().connection.cursor()
+        cursor = Transaction().cursor
 
         line = MoveLine.__table__()
         party = Party.__table__()
