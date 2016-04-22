@@ -443,6 +443,7 @@ class Report(Workflow, ModelSQL, ModelView):
                     subdivision_code = self.map_subdivision_code[
                         (country.id, subdivision.id)]
             report_party = {
+                'party': party.id,
                 'party_vat': party.vat_code,
                 'party_name': party.name,
                 'nature': map_party_type.get(party.party_type),
@@ -545,6 +546,10 @@ class ReportParty(ModelSQL, ModelView):
         ondelete='CASCADE')
     company = fields.Function(fields.Many2One('company.company', 'Company'),
         'get_report_field', searcher='search_report_field')
+    party = fields.Many2One('party.party', 'Party',
+        states={
+            'required': True,
+            })
     party_vat = fields.Char('Party VAT')
     representative_nif = fields.Char('Representative VAT')
     party_name = fields.Char('Party Name')
