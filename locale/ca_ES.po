@@ -256,6 +256,10 @@ msgctxt "field:aeat.182.report.party,nature:"
 msgid "Nature"
 msgstr "Naturalesa"
 
+msgctxt "field:aeat.182.report.party,party:"
+msgid "Party"
+msgstr "Tercer"
+
 msgctxt "field:aeat.182.report.party,party_name:"
 msgid "Party Name"
 msgstr "Nom del tercer"
