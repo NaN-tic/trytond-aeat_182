@@ -9,8 +9,8 @@ copyright notices and license terms. -->
     <field name="report"/>
     <label name="party_vat"/>
     <field name="party_vat"/>
-    <label name="representative_nif"/>
-    <field name="representative_nif"/>
+    <label name="representative_vat"/>
+    <field name="representative_vat"/>
     <label name="party_name"/>
     <field name="party_name"/>
     <label name="nature"/>
