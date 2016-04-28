@@ -4,6 +4,7 @@ AEAT 182 Model Scenario
 
 Imports::
     >>> import datetime
+    >>> import os
     >>> from dateutil.relativedelta import relativedelta
     >>> from decimal import Decimal
     >>> from operator import attrgetter
@@ -167,7 +168,7 @@ Generate First Year 182 Report::
     >>> report.fiscalyear = fiscalyear1
     >>> report.fiscalyear_code = fiscalyear1.end_date.year
     >>> report.presentation = 'printed'
-    >>> report.declarant_nature = 'non_profit_entity'
+    >>> report.declarant_nature = '1'
     >>> report.type = 'N'
     >>> report.accounts.append(revenue)
     >>> report.click('calculate')
@@ -177,7 +178,7 @@ Generate First Year 182 Report::
     >>> report.amount_of_donations
     Decimal('450')
     >>> report_party, = ReportParty.find([
-    ...         ('party_vat', '=', 'ES00000001R'),
+    ...         ('party_vat', '=', '00000001R'),
     ...         ('report', '=', report.id),
     ...         ])
     >>> report_party.amount
@@ -185,7 +186,7 @@ Generate First Year 182 Report::
     >>> report_party.percentage_deduction
     Decimal('75')
     >>> report_party, = ReportParty.find([
-    ...         ('party_vat', '=', 'ES00000002W'),
+    ...         ('party_vat', '=', '00000002W'),
     ...         ('report', '=', report.id),
     ...         ])
     >>> report_party.amount
@@ -246,7 +247,7 @@ Generate Second Year 182 Report::
     >>> report.fiscalyear = fiscalyear2
     >>> report.fiscalyear_code = fiscalyear2.end_date.year
     >>> report.presentation = 'printed'
-    >>> report.declarant_nature = 'non_profit_entity'
+    >>> report.declarant_nature = '1'
     >>> report.type = 'N'
     >>> report.accounts.append(revenue)
     >>> report.click('calculate')
@@ -256,7 +257,7 @@ Generate Second Year 182 Report::
     >>> report.amount_of_donations
     Decimal('460')
     >>> report_party, = ReportParty.find([
-    ...         ('party_vat', '=', 'ES00000001R'),
+    ...         ('party_vat', '=', '00000001R'),
     ...         ('report', '=', report.id),
     ...         ])
     >>> report_party.amount
@@ -264,7 +265,7 @@ Generate Second Year 182 Report::
     >>> report_party.percentage_deduction
     Decimal('30')
     >>> report_party, = ReportParty.find([
-    ...         ('party_vat', '=', 'ES00000002W'),
+    ...         ('party_vat', '=', '00000002W'),
     ...         ('report', '=', report.id),
     ...         ])
     >>> report_party.amount
@@ -324,7 +325,7 @@ Generate Third Year 182 Report::
     >>> report.fiscalyear = fiscalyear3
     >>> report.fiscalyear_code = fiscalyear3.end_date.year
     >>> report.presentation = 'printed'
-    >>> report.declarant_nature = 'non_profit_entity'
+    >>> report.declarant_nature = '1'
     >>> report.type = 'N'
     >>> report.accounts.append(revenue)
     >>> report.click('calculate')
@@ -334,7 +335,7 @@ Generate Third Year 182 Report::
     >>> report.amount_of_donations
     Decimal('460')
     >>> report_party, = ReportParty.find([
-    ...         ('party_vat', '=', 'ES00000001R'),
+    ...         ('party_vat', '=', '00000001R'),
     ...         ('report', '=', report.id),
     ...         ])
     >>> report_party.amount
@@ -342,7 +343,7 @@ Generate Third Year 182 Report::
     >>> report_party.percentage_deduction
     Decimal('35')
     >>> report_party, = ReportParty.find([
-    ...         ('party_vat', '=', 'ES00000002W'),
+    ...         ('party_vat', '=', '00000002W'),
     ...         ('report', '=', report.id),
     ...         ])
     >>> report_party.amount
@@ -350,7 +351,7 @@ Generate Third Year 182 Report::
     >>> report_party.percentage_deduction
     Decimal('40')
     >>> report_party, = ReportParty.find([
-    ...         ('party_vat', '=', 'ES00000003A'),
+    ...         ('party_vat', '=', '00000003A'),
     ...         ('report', '=', report.id),
     ...         ])
     >>> report_party.amount
