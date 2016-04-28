@@ -62,6 +62,10 @@ msgctxt "field:aeat.182.report,declarant_nature:"
 msgid "Nature of the Declarant"
 msgstr "Naturaleza del declarante"
 
+msgctxt "field:aeat.182.report,declaration_number:"
+msgid "Declaration Number"
+msgstr "Número de declaración"
+
 msgctxt "field:aeat.182.report,donation_amount_threshold:"
 msgid ""
 "Donation Amount Threshold for the Applying of the Second Scale of Deduction"
@@ -291,7 +295,7 @@ msgctxt "field:aeat.182.report.party,report:"
 msgid "Report"
 msgstr "Informe"
 
-msgctxt "field:aeat.182.report.party,representative_nif:"
+msgctxt "field:aeat.182.report.party,representative_vat:"
 msgid "Representative VAT"
 msgstr "NIF del representante"
 
