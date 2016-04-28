@@ -358,3 +358,11 @@ Generate Third Year 182 Report::
     Decimal('200')
     >>> report_party.percentage_deduction
     Decimal('30')
+
+Generate AEAT 182 Model File::
+
+    >>> report.click('process')
+    >>> csv_file = open(os.path.join(os.path.dirname(__file__), 'test.txt')
+    ...     ).read()
+    >>> str(report.file_) == csv_file
+    True
