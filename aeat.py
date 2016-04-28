@@ -9,7 +9,9 @@ from trytond.pyson import And, Bool, Eval, Not
 from trytond.transaction import Transaction
 import unicodedata
 
+from retrofix import aeat182
 from sql.aggregate import Sum
+import retrofix
 
 
 __all__ = ['Report', 'ReportAccount', 'ReportParty']
@@ -49,6 +51,11 @@ IDENTIFICATION_OF_GOOD = [
     (None, ''),
     ('NRC', 'NCR. Real State'),
     ('ISIN', 'ISIN. transferable securities'),
+    ]
+DONATION_TYPE = [
+    ('N', 'Normal'),
+    ('C', 'Complementary'),
+    ('S', 'Substitutive')
     ]
 
 
@@ -119,9 +126,9 @@ class Report(Workflow, ModelSQL, ModelView):
             'readonly': ~Eval('state').in_(['draft', 'calculated']),
             }, depends=['state'])
     declarant_nature = fields.Selection([
-            ('non_profit_entity', 'Non-profit Entity'),
-            ('foundation', 'Foundation'),
-            ('protected_heritage', 'Protected Heritage'),
+            ('1', 'Non-profit Entity'),
+            ('2', 'Foundation'),
+            ('3', 'Protected Heritage'),
             ], 'Nature of the Declarant',
         states={
             'readonly': Eval('state') != 'draft',
@@ -134,15 +141,16 @@ class Report(Workflow, ModelSQL, ModelView):
             'readonly': ~Eval('state').in_(['draft', 'calculated']),
             'invisible': Eval('declarant_nature') != 'protected_heritage',
             }, depends=['state', 'declarant_nature'])
-    type = fields.Selection([
-            ('N', 'Normal'),
-            ('C', 'Complementary'),
-            ('S', 'Substitutive')
-            ], 'Type',
+    type = fields.Selection(DONATION_TYPE, 'Type',
         states={
             'required': True,
             'readonly': ~Eval('state').in_(['draft', 'calculated']),
             }, depends=['state'])
+    declaration_number = fields.Char('Declaration Number', size=13,
+        states={
+            'readonly': ~Eval('state').in_(['draft', 'calculated']),
+            'invisible': Eval('type') == 'N',
+            }, depends=['state', 'type'])
     previous_number = fields.Char('Previous Declaration Number', size=13,
         states={
             'readonly': ~Eval('state').in_(['draft', 'calculated']),
@@ -435,7 +443,7 @@ class Report(Workflow, ModelSQL, ModelView):
         for record in cursor.fetchall():
             party = Party(record[0])
             address = party.address_get()
-            subdivision_code = None
+            subdivision_code = '00'
             if address:
                 country = address.country or None
                 subdivision = address.subdivision or None
@@ -444,7 +452,7 @@ class Report(Workflow, ModelSQL, ModelView):
                         (country.id, subdivision.id)]
             report_party = {
                 'party': party.id,
-                'party_vat': party.vat_code,
+                'party_vat': party.vat_code and party.vat_code[-9:] or '',
                 'party_name': party.name,
                 'nature': map_party_type.get(party.party_type),
                 'party_subdivision_code': subdivision_code,
@@ -521,13 +529,49 @@ class Report(Workflow, ModelSQL, ModelView):
     @ModelView.button
     @Workflow.transition('done')
     def process(cls, reports):
-        pass
+        for report in reports:
+            report.create_file()
 
     @classmethod
     @ModelView.button
     @Workflow.transition('cancelled')
     def cancel(cls, reports):
         pass
+
+    def create_file(self):
+        fields = ('fiscalyear_code', 'company_vat', 'company_name', 'type',
+            'support_type', 'company_phone', 'contact_name', 'nature',
+            'declaration_number', 'protected_heritage_name',
+            'previous_number', 'total_number_of_donor_records',
+            'amount_of_donations', 'protected_heritage_vat')
+
+        records = []
+        record = retrofix.Record(aeat182.PRESENTER_RECORD)
+        for field in fields:
+            value = getattr(self, field, None)
+            if field == 'type':
+                if value != 'N':
+                    for v in DONATION_TYPE:
+                        if value == v[0]:
+                            setattr(record, v[1].lower(), value)
+                            break
+                continue
+            if isinstance(value, (int, float, Decimal)):
+                value = str(value)
+            if value is not None:
+                setattr(record, field, value)
+        records.append(record)
+        for report_party in self.report_parties:
+            record = report_party.get_record()
+            record.fiscalyear_code = str(self.fiscalyear_code)
+            record.company_vat = self.company_vat
+            records.append(record)
+        data = retrofix.record.write(records)
+        data = remove_accents(data).upper()
+        if isinstance(data, unicode):
+            data = data.encode('iso-8859-1')
+        self.file_ = buffer(data)
+        self.save()
 
 
 class ReportAccount(ModelSQL):
@@ -551,7 +595,7 @@ class ReportParty(ModelSQL, ModelView):
             'required': True,
             })
     party_vat = fields.Char('Party VAT')
-    representative_nif = fields.Char('Representative VAT')
+    representative_vat = fields.Char('Representative VAT')
     party_name = fields.Char('Party Name')
     nature = fields.Selection([
             ('F', '[F]. Physical person'),
@@ -615,3 +659,19 @@ class ReportParty(ModelSQL, ModelView):
     @classmethod
     def search_report_field(cls, name, clause):
         return [('report.' + name,) + tuple(clause[1:])]
+
+    def get_record(self):
+        fields = ('party_vat', 'representative_vat', 'party_name',
+            'party_subdivision_code', 'key', 'percentage_deduction',
+            'identification_of_good', 'deduction_autonomous_community',
+            'amount', 'donation_in_kind', 'exercise_of_the_revoked_donation',
+            'percentage_deduction_autonomous_community', 'nature',
+            'revocation', 'type_of_good')
+        record = retrofix.Record(aeat182.PARTY_RECORD)
+        for field in fields:
+            value = getattr(self, field, None)
+            if isinstance(value, (int, float, Decimal)):
+                value = str(value)
+            if value is not None:
+                setattr(record, field, value)
+        return record
