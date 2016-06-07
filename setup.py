@@ -40,8 +40,8 @@ version = info.get('version', '0.0.1')
 major_version, minor_version, _ = version.split('.', 2)
 major_version = int(major_version)
 minor_version = int(minor_version)
-name = 'trytond_aeat_182'
-download_url = 'https://bitbucket.org/zikzakmedia/trytond-aeat_182'
+name = 'trytonspain_aeat_182'
+download_url = 'https://bitbucket.org/trytonspain/trytond-aeat_182'
 
 requires = []
 for dep in info.get('depends', []):
