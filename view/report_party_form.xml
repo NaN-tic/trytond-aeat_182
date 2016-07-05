@@ -2,7 +2,7 @@
 <!-- This file is part of aeat_182 module for Tryton.
 The COPYRIGHT file at the top level of this repository contains the full
 copyright notices and license terms. -->
-<form string="AEAT 182 Party">
+<form>
     <label name="report"/>
     <label name="party"/>
     <field name="party"/>
