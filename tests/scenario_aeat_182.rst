@@ -43,8 +43,6 @@ Create company::
     >>> identifier.code = 'ES00000000T'
     >>> identifier.type = 'eu_vat'
     >>> identifier.save()
-    >>> company.party.vat_code
-    'ES00000000T'
 
 Create fiscal year::
 
