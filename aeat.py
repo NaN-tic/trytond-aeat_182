@@ -444,6 +444,10 @@ class Report(Workflow, ModelSQL, ModelView):
             party = Party(record[0])
             address = party.address_get()
             subdivision_code = '00'
+            amount = record[1]
+            # SQLite uses float for SUM
+            if not isinstance(amount, Decimal):
+                amount = Decimal(str(amount))
             if address:
                 country = address.country or None
                 subdivision = address.subdivision or None
@@ -456,7 +460,7 @@ class Report(Workflow, ModelSQL, ModelView):
                 'party_name': party.name,
                 'nature': map_party_type.get(party.party_type),
                 'party_subdivision_code': subdivision_code,
-                'amount': record[1],
+                'amount': amount,
                 'key': 'A',
                 'report': report_id,
                 'company': company_id,
