@@ -8,7 +8,8 @@ Imports::
     >>> from dateutil.relativedelta import relativedelta
     >>> from decimal import Decimal
     >>> from operator import attrgetter
-    >>> from proteus import config, Model, Wizard
+    >>> from proteus import Model, Wizard
+    >>> from trytond.tests.tools import install_modules
     >>> from trytond.modules.currency.tests.tools import get_currency
     >>> from trytond.modules.company.tests.tools import create_company, \
     ...     get_company
@@ -21,18 +22,9 @@ Imports::
     >>> two_years_ago = last_year - relativedelta(years=1)
     >>> three_years_ago = two_years_ago - relativedelta(years=1)
 
-Create database::
-
-    >>> config = config.set_trytond()
-    >>> config.pool.test = True
-
 Install aeat_182 module::
 
-    >>> Module = Model.get('ir.module')
-    >>> aeat_182_module, = Module.find(
-    ...     [('name', '=', 'aeat_182')])
-    >>> Module.install([aeat_182_module.id], config.context)
-    >>> Wizard('ir.module.install_upgrade').execute('upgrade')
+    >>> config = install_modules('aeat_182')
 
 Create company::
 
