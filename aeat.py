@@ -3,15 +3,17 @@
 # The COPYRIGHT file at the top level of this repository contains
 # the full copyright notices and license terms.
 from decimal import Decimal
-from trytond.model import ModelSQL, ModelView, fields, Workflow, Unique
-from trytond.pool import Pool
-from trytond.pyson import And, Bool, Eval, Not
 from trytond.transaction import Transaction
 import unicodedata
+import sys
 
 from retrofix import aeat182
 from retrofix.record import Record, write as retrofix_write
 from sql.aggregate import Sum
+
+from trytond.model import ModelSQL, ModelView, fields, Workflow, Unique
+from trytond.pool import Pool
+from trytond.pyson import And, Bool, Eval, Not
 
 
 __all__ = ['Report', 'ReportAccount', 'ReportParty']
@@ -60,7 +62,9 @@ DONATION_TYPE = [
 
 
 def remove_accents(unicode_string):
-    if isinstance(unicode_string, str):
+    str_ = str if sys.version_info < (3, 0) else bytes
+    unicode_ = unicode if sys.version_info < (3, 0) else str
+    if isinstance(unicode_string, str_):
         unicode_string_bak = unicode_string
         try:
             unicode_string = unicode_string_bak.decode('iso-8859-1')
@@ -70,7 +74,7 @@ def remove_accents(unicode_string):
             except UnicodeDecodeError:
                 return unicode_string_bak
 
-    if not isinstance(unicode_string, unicode):
+    if not isinstance(unicode_string, unicode_):
         return unicode_string
 
     unicode_string_nfd = ''.join(
@@ -574,7 +578,7 @@ class Report(Workflow, ModelSQL, ModelView):
         data = remove_accents(data).upper()
         if isinstance(data, unicode):
             data = data.encode('iso-8859-1')
-        self.file_ = buffer(data)
+        self.file_ = self.__class__.file_.cast(data)
         self.save()
 
 
