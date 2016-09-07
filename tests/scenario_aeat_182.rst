@@ -166,13 +166,13 @@ Generate First Year 182 Report::
     >>> report.total_number_of_donor_records
     3
     >>> report.amount_of_donations
-    Decimal('450.0')
+    Decimal('450.00')
     >>> report_party, = ReportParty.find([
     ...         ('party_vat', '=', '00000001R'),
     ...         ('report', '=', report.id),
     ...         ])
     >>> report_party.amount
-    Decimal('100.0')
+    Decimal('100.00')
     >>> report_party.percentage_deduction
     Decimal('75')
     >>> report_party, = ReportParty.find([
@@ -180,7 +180,7 @@ Generate First Year 182 Report::
     ...         ('report', '=', report.id),
     ...         ])
     >>> report_party.amount
-    Decimal('100.0')
+    Decimal('100.00')
     >>> report_party.percentage_deduction
     Decimal('35')
 
@@ -245,13 +245,13 @@ Generate Second Year 182 Report::
     >>> report.total_number_of_donor_records
     3
     >>> report.amount_of_donations
-    Decimal('460.0')
+    Decimal('460.00')
     >>> report_party, = ReportParty.find([
     ...         ('party_vat', '=', '00000001R'),
     ...         ('report', '=', report.id),
     ...         ])
     >>> report_party.amount
-    Decimal('160.0')
+    Decimal('160.00')
     >>> report_party.percentage_deduction
     Decimal('30')
     >>> report_party, = ReportParty.find([
@@ -259,7 +259,7 @@ Generate Second Year 182 Report::
     ...         ('report', '=', report.id),
     ...         ])
     >>> report_party.amount
-    Decimal('100.0')
+    Decimal('100.00')
     >>> report_party.percentage_deduction
     Decimal('35')
 
@@ -323,13 +323,13 @@ Generate Third Year 182 Report::
     >>> report.total_number_of_donor_records
     3
     >>> report.amount_of_donations
-    Decimal('460.0')
+    Decimal('460.00')
     >>> report_party, = ReportParty.find([
     ...         ('party_vat', '=', '00000001R'),
     ...         ('report', '=', report.id),
     ...         ])
     >>> report_party.amount
-    Decimal('160.0')
+    Decimal('160.00')
     >>> report_party.percentage_deduction
     Decimal('35')
     >>> report_party, = ReportParty.find([
@@ -337,7 +337,7 @@ Generate Third Year 182 Report::
     ...         ('report', '=', report.id),
     ...         ])
     >>> report_party.amount
-    Decimal('100.0')
+    Decimal('100.00')
     >>> report_party.percentage_deduction
     Decimal('40')
     >>> report_party, = ReportParty.find([
@@ -345,7 +345,7 @@ Generate Third Year 182 Report::
     ...         ('report', '=', report.id),
     ...         ])
     >>> report_party.amount
-    Decimal('200.0')
+    Decimal('200.00')
     >>> report_party.percentage_deduction
     Decimal('30')
 

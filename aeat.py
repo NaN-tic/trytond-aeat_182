@@ -163,7 +163,9 @@ class Report(Workflow, ModelSQL, ModelView):
     total_number_of_donor_records = fields.Function(fields.Integer(
         'Total number of donor records'), 'get_totals')
     amount_of_donations = fields.Function(fields.Numeric('Amount of donations',
-        digits=(16, 2)), 'get_totals')
+            digits=(16, Eval('currency_digits', 2)),
+            depends=['currency_digits']),
+        'get_totals')
     date = fields.Date('Date', readonly=True)
     contact_name = fields.Char('Name And Surname Contact', size=40,
         states={
@@ -339,7 +341,8 @@ class Report(Workflow, ModelSQL, ModelView):
             'total_number_of_donor_records':
                 {r.id: len(r.report_parties) for r in reports},
             'amount_of_donations':
-                {r.id: Decimal(sum([l.amount for l in r.report_parties]))
+                {r.id: r.currency.round(
+                    Decimal(sum([l.amount for l in r.report_parties])))
                     if r.report_parties else Decimal('0.0')
                     for r in reports},
             }
@@ -452,6 +455,7 @@ class Report(Workflow, ModelSQL, ModelView):
             # SQLite uses float for SUM
             if not isinstance(amount, Decimal):
                 amount = Decimal(str(amount))
+            amount = self.currency.round(amount)
             if address:
                 country = address.country or None
                 subdivision = address.subdivision or None
