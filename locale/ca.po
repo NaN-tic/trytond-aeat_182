@@ -40,11 +40,11 @@ msgstr "Nom i cognoms del contacte"
 
 msgctxt "field:aeat.182.report,create_date:"
 msgid "Create Date"
-msgstr "Data de creació"
+msgstr "Data creació"
 
 msgctxt "field:aeat.182.report,create_uid:"
 msgid "Create User"
-msgstr "Usuari de creació"
+msgstr "Usuari creació"
 
 msgctxt "field:aeat.182.report,currency:"
 msgid "Currency"
@@ -118,7 +118,7 @@ msgstr "Codi de l'exercici fiscal"
 
 msgctxt "field:aeat.182.report,id:"
 msgid "ID"
-msgstr "Identificador"
+msgstr "ID"
 
 msgctxt "field:aeat.182.report,periods_for_pluriannual_donation:"
 msgid "Immediately Preceding Tax Periods for Pluriannual Donation"
@@ -174,11 +174,11 @@ msgstr "Tipus de declaració"
 
 msgctxt "field:aeat.182.report,write_date:"
 msgid "Write Date"
-msgstr "Data de modificació"
+msgstr "Data modificació"
 
 msgctxt "field:aeat.182.report,write_uid:"
 msgid "Write User"
-msgstr "Usuari de modificació"
+msgstr "Usuari modificació"
 
 msgctxt "field:aeat.182.report.account,account:"
 msgid "Account"
@@ -186,15 +186,15 @@ msgstr "Compte comptable"
 
 msgctxt "field:aeat.182.report.account,create_date:"
 msgid "Create Date"
-msgstr "Data de creació"
+msgstr "Data creació"
 
 msgctxt "field:aeat.182.report.account,create_uid:"
 msgid "Create User"
-msgstr "Usuari de creació"
+msgstr "Usuari creació"
 
 msgctxt "field:aeat.182.report.account,id:"
 msgid "ID"
-msgstr "Identificador"
+msgstr "ID"
 
 msgctxt "field:aeat.182.report.account,rec_name:"
 msgid "Name"
@@ -206,11 +206,11 @@ msgstr "Informe"
 
 msgctxt "field:aeat.182.report.account,write_date:"
 msgid "Write Date"
-msgstr "Data de modificació"
+msgstr "Data modificació"
 
 msgctxt "field:aeat.182.report.account,write_uid:"
 msgid "Write User"
-msgstr "Usuari de modificació"
+msgstr "Usuari modificació"
 
 msgctxt "field:aeat.182.report.party,amount:"
 msgid "Amount"
@@ -222,11 +222,11 @@ msgstr "Empresa"
 
 msgctxt "field:aeat.182.report.party,create_date:"
 msgid "Create Date"
-msgstr "Data de creació"
+msgstr "Data creació"
 
 msgctxt "field:aeat.182.report.party,create_uid:"
 msgid "Create User"
-msgstr "Usuari de creació"
+msgstr "Usuari creació"
 
 msgctxt "field:aeat.182.report.party,currency_digits:"
 msgid "Currency Digits"
@@ -246,7 +246,7 @@ msgstr "Exercici de la donació revocada"
 
 msgctxt "field:aeat.182.report.party,id:"
 msgid "ID"
-msgstr "Identificador"
+msgstr "ID"
 
 msgctxt "field:aeat.182.report.party,identification_of_good:"
 msgid "Identification of good"
@@ -307,11 +307,11 @@ msgstr "Tipus de bé"
 
 msgctxt "field:aeat.182.report.party,write_date:"
 msgid "Write Date"
-msgstr "Data de modificació"
+msgstr "Data modificació"
 
 msgctxt "field:aeat.182.report.party,write_uid:"
 msgid "Write User"
-msgstr "Usuari de modificació"
+msgstr "Usuari modificació"
 
 msgctxt "help:aeat.182.report,fiscalyear_code:"
 msgid ""
