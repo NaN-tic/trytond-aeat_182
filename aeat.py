@@ -368,7 +368,8 @@ class Report(Workflow, ModelSQL, ModelView):
     def on_change_company(self):
         if self.company:
             party = self.company.party
-            company_vat = getattr(party, 'vat_code', None)
+            company_vat = (party.tax_identifier.code if party.tax_identifier
+                else '')
             phone = getattr(party, 'phone', None)
             self.company_vat = company_vat and company_vat[-9:] or ''
             self.company_name = party.name
@@ -464,7 +465,8 @@ class Report(Workflow, ModelSQL, ModelView):
                         (country.id, subdivision.id)]
             report_party = {
                 'party': party.id,
-                'party_vat': party.vat_code and party.vat_code[-9:] or '',
+                'party_vat': (party.tax_identifier and
+                    party.tax_identifier.code[-9:] or ''),
                 'party_name': party.name,
                 'nature': map_party_type.get(party.party_type),
                 'party_subdivision_code': subdivision_code,
