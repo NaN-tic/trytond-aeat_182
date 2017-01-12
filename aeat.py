@@ -10,6 +10,7 @@ from trytond.transaction import Transaction
 import unicodedata
 
 from retrofix import aeat182
+from sql import Null
 from sql.aggregate import Sum
 import retrofix
 
@@ -274,7 +275,7 @@ class Report(Workflow, ModelSQL, ModelView):
 
     @staticmethod
     def default_declarant_nature():
-        return 'foundation'
+        return '3'
 
     @staticmethod
     def default_fiscalyear():
@@ -429,6 +430,8 @@ class Report(Workflow, ModelSQL, ModelView):
                     &
                         (account.id.in_(
                                 [a.id for a in self.accounts]))
+                    &
+                        (line.party != Null)
                     ),
                 group_by=(
                     account.code,
