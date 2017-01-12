@@ -8,6 +8,7 @@ import unicodedata
 import sys
 
 from retrofix import aeat182
+from sql import Null
 from retrofix.record import Record, write as retrofix_write
 from sql.aggregate import Sum
 
@@ -280,7 +281,7 @@ class Report(Workflow, ModelSQL, ModelView):
 
     @staticmethod
     def default_declarant_nature():
-        return 'foundation'
+        return '3'
 
     @staticmethod
     def default_fiscalyear():
@@ -437,6 +438,8 @@ class Report(Workflow, ModelSQL, ModelView):
                     &
                         (account.id.in_(
                                 [a.id for a in self.accounts]))
+                    &
+                        (line.party != Null)
                     ),
                 group_by=(
                     account.code,
