@@ -275,7 +275,7 @@ class Report(Workflow, ModelSQL, ModelView):
 
     @staticmethod
     def default_declarant_nature():
-        return '3'
+        return '2'
 
     @staticmethod
     def default_fiscalyear():
