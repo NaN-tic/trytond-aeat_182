@@ -10,6 +10,7 @@ from trytond.transaction import Transaction
 import unicodedata
 
 from retrofix import aeat182
+from retrofix.record import Record, write as retrofix_write
 from sql import Null
 from sql.aggregate import Sum
 import retrofix
@@ -549,7 +550,7 @@ class Report(Workflow, ModelSQL, ModelView):
             'amount_of_donations', 'protected_heritage_vat')
 
         records = []
-        record = retrofix.Record(aeat182.PRESENTER_RECORD)
+        record = Record(aeat182.PRESENTER_RECORD)
         for field in fields:
             value = getattr(self, field, None)
             if field == 'type':
@@ -569,7 +570,7 @@ class Report(Workflow, ModelSQL, ModelView):
             record.fiscalyear_code = str(self.fiscalyear_code)
             record.company_vat = self.company_vat
             records.append(record)
-        data = retrofix.record.write(records)
+        data = retrofix_write(records)
         data = remove_accents(data).upper()
         if isinstance(data, unicode):
             data = data.encode('iso-8859-1')
@@ -670,7 +671,7 @@ class ReportParty(ModelSQL, ModelView):
             'amount', 'donation_in_kind', 'exercise_of_the_revoked_donation',
             'percentage_deduction_autonomous_community', 'nature',
             'revocation', 'type_of_good')
-        record = retrofix.Record(aeat182.PARTY_RECORD)
+        record = Record(aeat182.PARTY_RECORD)
         for field in fields:
             value = getattr(self, field, None)
             if isinstance(value, (int, float, Decimal)):
