@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# This file is part of aeat_182 module for Tryton.
+# This file is part aeat_182 module for Tryton.
 # The COPYRIGHT file at the top level of this repository contains
 # the full copyright notices and license terms.
 
@@ -12,9 +12,9 @@ try:
 except ImportError:
     from ConfigParser import ConfigParser
 
-MODULE2PREFIX = {
-    'party_type': 'trytonspain',
-    }
+MODULE = 'aeat_182'
+PREFIX = 'trytonspain'
+MODULE2PREFIX = {}
 
 
 def read(fname):
@@ -42,39 +42,36 @@ version = info.get('version', '0.0.1')
 major_version, minor_version, _ = version.split('.', 2)
 major_version = int(major_version)
 minor_version = int(minor_version)
-name = 'trytonspain_aeat_182'
-download_url = 'https://bitbucket.org/trytonspain/trytond-aeat_182'
 
-requires = ['retrofix>=0.21']
+requires = []
 for dep in info.get('depends', []):
     if not re.match(r'(ir|res)(\W|$)', dep):
         prefix = MODULE2PREFIX.get(dep, 'trytond')
         requires.append(get_require_version('%s_%s' % (prefix, dep)))
 requires.append(get_require_version('trytond'))
 
-tests_require = [get_require_version('proteus'),
-    get_require_version('trytond-account_invoice')]
+tests_require = [get_require_version('proteus')]
 dependency_links = []
 if minor_version % 2:
     # Add development index for testing with proteus
     dependency_links.append('https://trydevpi.tryton.org/')
 
-setup(name=name,
+setup(name='%s_%s' % (PREFIX, MODULE),
     version=version,
-    description='The aeat 182 module about Spanish report AEAT 182 Module',
+    description='Tryton aeat_182 Module',
     long_description=read('README'),
-    author='Zikzakmedia SL',
-    author_email='zikzak@zikzakmedia.com',
-    url='https://bitbucket.org/zikzakmedia/',
-    download_url=download_url,
+    author='TrytonSpain',
+    author_email='info@trytonspain.com',
+    url='https://bitbucket.org/trytonspain/',
+    download_url="https://bitbucket.org/trytonspain/trytond-%s" % MODULE,
     keywords='',
-    package_dir={'trytond.modules.aeat_182': '.'},
+    package_dir={'trytond.modules.%s' % MODULE: '.'},
     packages=[
-        'trytond.modules.aeat_182',
-        'trytond.modules.aeat_182.tests',
+        'trytond.modules.%s' % MODULE,
+        'trytond.modules.%s.tests' % MODULE,
         ],
     package_data={
-        'trytond.modules.aeat_182': (info.get('xml', [])
+        'trytond.modules.%s' % MODULE: (info.get('xml', [])
             + ['tryton.cfg', 'view/*.xml', 'locale/*.po', '*.odt',
                 'icons/*.svg', 'tests/*.rst']),
         },
@@ -101,9 +98,9 @@ setup(name=name,
         'Natural Language :: Spanish',
         'Operating System :: OS Independent',
         'Programming Language :: Python :: 2.7',
-        'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: Implementation :: CPython',
         'Programming Language :: Python :: Implementation :: PyPy',
         'Topic :: Office/Business',
@@ -114,11 +111,13 @@ setup(name=name,
     zip_safe=False,
     entry_points="""
     [trytond.modules]
-    aeat_182 = trytond.modules.aeat_182
-    """,
+    %s = trytond.modules.%s
+    """ % (MODULE, MODULE),
     test_suite='tests',
     test_loader='trytond.test_loader:Loader',
     tests_require=tests_require,
     use_2to3=True,
-    convert_2to3_doctests=['tests/scenario_aeat_182.rst'],
+    convert_2to3_doctests=[
+        'tests/scenario_aeat_182.rst',
+        ],
     )
