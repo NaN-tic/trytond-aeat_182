@@ -4,9 +4,9 @@ The COPYRIGHT file at the top level of this repository contains the full
 copyright notices and license terms. -->
 <form string="AEAT 182 Party">
     <label name="report"/>
+    <field name="report"/>
     <label name="party"/>
     <field name="party"/>
-    <field name="report"/>
     <label name="party_vat"/>
     <field name="party_vat"/>
     <label name="representative_vat"/>
@@ -24,7 +24,7 @@ copyright notices and license terms. -->
         <field name="percentage_deduction" xexpand="0"/>
         <label name="percentage_deduction" string="%" xalign="0.0" xexpand="1"/>
     </group>
-    <label name="amount" colspan="3"/>
+    <label name="amount"/>
     <field name="amount"/>
     <label name="donation_in_kind"/>
     <field name="donation_in_kind"/>
