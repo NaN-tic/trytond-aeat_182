@@ -606,7 +606,7 @@ class ReportParty(ModelSQL, ModelView):
     report = fields.Many2One('aeat.182.report', 'Report', required=True,
         ondelete='CASCADE')
     company = fields.Function(fields.Many2One('company.company', 'Company'),
-        'get_report_field', searcher='search_report_field')
+        'on_change_with_company', searcher='search_company')
     party = fields.Many2One('party.party', 'Party',
         states={
             'required': True,
@@ -668,14 +668,14 @@ class ReportParty(ModelSQL, ModelView):
         res = {r.id: r.report.currency.digits for r in records}
         return res
 
-    @classmethod
-    def get_report_field(cls, records, names):
-        res = {n: {r.id: getattr(r.report, n) for r in records} for n in names}
-        return res
+    @fields.depends('report')
+    def on_change_with_company(self, name=None):
+        if self.report:
+            return self.report.company.id
 
     @classmethod
-    def search_report_field(cls, name, clause):
-        return [('report.' + name,) + tuple(clause[1:])]
+    def search_company(cls, name, clause):
+        return [('report.%s' % name,) + tuple(clause[1:])]
 
     def get_record(self):
         fields = ('party_vat', 'representative_vat', 'party_name',
