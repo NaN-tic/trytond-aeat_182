@@ -2,12 +2,12 @@
 # The COPYRIGHT file at the top level of this repository contains
 # the full copyright notices and license terms.
 from trytond.pool import Pool
-from .aeat import *
+from . import aeat
 
 
 def register():
     Pool.register(
-        Report,
-        ReportAccount,
-        ReportParty,
+        aeat.Report,
+        aeat.ReportAccount,
+        aeat.ReportParty,
         module='aeat_182', type_='model')
