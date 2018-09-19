@@ -2,18 +2,16 @@
 # This file is part of aeat_182 module for Tryton.
 # The COPYRIGHT file at the top level of this repository contains
 # the full copyright notices and license terms.
-from decimal import Decimal
-from trytond.transaction import Transaction
 import unicodedata
 import sys
-
+from decimal import Decimal
 from retrofix import aeat182
 from sql import Null
 from retrofix.record import Record, write as retrofix_write
 from sql.aggregate import Sum
-
 from trytond.model import ModelSQL, ModelView, fields, Workflow, Unique
 from trytond.pool import Pool
+from trytond.transaction import Transaction
 from trytond.pyson import And, Bool, Eval, Not
 
 
@@ -64,7 +62,7 @@ DONATION_TYPE = [
 
 def remove_accents(unicode_string):
     str_ = str if sys.version_info < (3, 0) else bytes
-    unicode_ = unicode if sys.version_info < (3, 0) else str
+    unicode_ = str if sys.version_info < (3, 0) else str
     if isinstance(unicode_string, str_):
         unicode_string_bak = unicode_string
         try:
@@ -81,7 +79,7 @@ def remove_accents(unicode_string):
     unicode_string_nfd = ''.join(
         (c for c in unicodedata.normalize('NFD', unicode_string)
             if (unicodedata.category(c) != 'Mn'
-                or c in (u'\u0327', u'\u0303'))  # Avoids normalize ç and ñ
+                or c in ('\\u0327', '\\u0303'))  # Avoids normalize ç and ñ
             ))
     # It converts nfd to nfc to allow unicode.decode()
     return unicodedata.normalize('NFC', unicode_string_nfd)
@@ -165,8 +163,7 @@ class Report(Workflow, ModelSQL, ModelView):
         'Total number of donor records'), 'get_totals')
     amount_of_donations = fields.Function(fields.Numeric('Amount of donations',
             digits=(16, Eval('currency_digits', 2)),
-            depends=['currency_digits']),
-        'get_totals')
+            depends=['currency_digits']), 'get_totals')
     date = fields.Date('Date', readonly=True)
     contact_name = fields.Char('Name And Surname Contact', size=40,
         states={
@@ -338,19 +335,16 @@ class Report(Workflow, ModelSQL, ModelView):
 
     @classmethod
     def get_totals(cls, reports, names):
-        res = {
-            'total_number_of_donor_records':
-                {r.id: len(r.report_parties) for r in reports},
-            'amount_of_donations':
-                {r.id: r.currency.round(
-                    Decimal(sum([l.amount for l in r.report_parties])))
-                    if r.report_parties else Decimal('0.0')
-                    for r in reports},
-            }
-        for key in res.keys():
-            if key not in names:
-                del res[key]
-        return res
+        result = {n: {r.id: None for r in reports} for n in names}
+        for name in names:
+            for report in reports:
+                if name == 'total_number_of_donor_records':
+                    result[name][report.id] = len(report.report_parties)
+                elif name == 'amount_of_donations':
+                    result[name][report.id] = (report.currency.round(
+                        Decimal(sum([l.amount for l in report.report_parties])))
+                            if report.report_parties else Decimal('0.0'))
+        return result
 
     def get_currency(self, name):
         return self.company.currency.id
@@ -585,7 +579,7 @@ class Report(Workflow, ModelSQL, ModelView):
             records.append(record)
         data = retrofix_write(records)
         data = remove_accents(data).upper()
-        if isinstance(data, unicode):
+        if isinstance(data, str):
             data = data.encode('iso-8859-1')
         self.file_ = self.__class__.file_.cast(data)
         self.save()
