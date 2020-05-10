@@ -13,6 +13,8 @@ from trytond.model import ModelSQL, ModelView, fields, Workflow, Unique
 from trytond.pool import Pool
 from trytond.transaction import Transaction
 from trytond.pyson import And, Bool, Eval, Not
+from trytond.i18n import gettext
+from trytond.exceptions import UserError
 
 
 __all__ = ['Report', 'ReportAccount', 'ReportParty']
@@ -220,10 +222,6 @@ class Report(Workflow, ModelSQL, ModelView):
             ('code_uniq', Unique(t, t.fiscalyear, t.company),
                 'Report must be unique by fiscalyear and company'),
         ]
-        cls._error_messages.update({
-                'invalid_currency': ('Currency in AEAT 182 report "%s" must be'
-                    ' Euro.')
-                })
         cls._buttons.update({
                 'draft': {
                     'invisible': ~Eval('state').in_(['calculated',
@@ -260,7 +258,8 @@ class Report(Workflow, ModelSQL, ModelView):
 
     def check_euro(self):
         if self.currency.code != 'EUR':
-            self.raise_user_error('invalid_currency', self.rec_name)
+            raise UserError(gettext('aeat_182.msg_invalid_currency',
+                report=self.rec_name))
 
     @staticmethod
     def default_company():
@@ -470,7 +469,6 @@ class Report(Workflow, ModelSQL, ModelView):
                 'amount': amount,
                 'key': 'A',
                 'report': report_id,
-                'company': company_id,
                 }
             report_parties.append(report_party)
         return report_parties
@@ -662,7 +660,7 @@ class ReportParty(ModelSQL, ModelView):
         res = {r.id: r.report.currency.digits for r in records}
         return res
 
-    @fields.depends('report')
+    @fields.depends('report', '_parent_report.company')
     def on_change_with_company(self, name=None):
         if self.report:
             return self.report.company.id

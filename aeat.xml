@@ -4,16 +4,11 @@ The COPYRIGHT file at the top level of this repository contains the full
 copyright notices and license terms. -->
 <tryton>
     <data>
-
         <record model="res.group" id="group_aeat_182_admin">
             <field name="name">AEAT 182 Administration</field>
         </record>
         <record model="res.user-res.group" id="user_admin_group_aeat_182_admin">
             <field name="user" ref="res.user_admin"/>
-            <field name="group" ref="group_aeat_182_admin"/>
-        </record>
-        <record model="res.user-res.group" id="user_trigger_group_aeat_182_admin">
-            <field name="user" ref="res.user_trigger"/>
             <field name="group" ref="group_aeat_182_admin"/>
         </record>
 
@@ -140,6 +135,7 @@ copyright notices and license terms. -->
         </record>
 
         <record model="ir.rule.group" id="rule_group_aeat182">
+            <field name="name">User in company</field>
             <field name="model" search="[('model', '=', 'aeat.182.report')]"/>
             <field name="global_p" eval="True"/>
         </record>
@@ -151,6 +147,7 @@ copyright notices and license terms. -->
         </record>
 
         <record model="ir.rule.group" id="rule_group_aeat182_party">
+            <field name="name">User in company</field>
             <field name="model"
                 search="[('model', '=', 'aeat.182.report.party')]"/>
             <field name="global_p" eval="True"/>

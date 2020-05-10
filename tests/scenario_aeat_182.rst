@@ -54,10 +54,28 @@ Create chart of accounts::
     >>> accounts = get_accounts(company)
     >>> receivable = accounts['receivable']
     >>> revenue = accounts['revenue']
-    >>> revenue.party_required = True
     >>> revenue.deferral = True
     >>> revenue.save()
     >>> revenue.reload()
+
+Create waiting account::
+
+    >>> Account = Model.get('account.account')
+    >>> donation_account = Account(name='Donation 1')
+    >>> donation_account.type = accounts['receivable'].type
+    >>> donation_account.reconcile = True
+    >>> donation_account.party_required = True
+    >>> donation_account.save()
+    >>> donation_account2 = Account(name='Donation 2')
+    >>> donation_account2.type = accounts['receivable'].type
+    >>> donation_account2.reconcile = True
+    >>> donation_account2.party_required = True
+    >>> donation_account2.save()
+    >>> donation_account3 = Account(name='Donation 3')
+    >>> donation_account3.type = accounts['receivable'].type
+    >>> donation_account3.reconcile = True
+    >>> donation_account3.party_required = True
+    >>> donation_account3.save()
 
 Create tax::
 
@@ -98,7 +116,7 @@ Create First Year Move Line Donations::
     >>> move.journal = journal_revenue
     >>> move.date = period1.start_date
     >>> line = move.lines.new()
-    >>> line.account = revenue
+    >>> line.account = donation_account
     >>> line.credit = Decimal(50)
     >>> line.party = party
     >>> line = move.lines.new()
@@ -112,7 +130,7 @@ Create First Year Move Line Donations::
     >>> move.journal = journal_revenue
     >>> move.date = period1.start_date
     >>> line = move.lines.new()
-    >>> line.account = revenue
+    >>> line.account = donation_account
     >>> line.credit = Decimal(50)
     >>> line.party = party
     >>> line = move.lines.new()
@@ -126,7 +144,7 @@ Create First Year Move Line Donations::
     >>> move.journal = journal_revenue
     >>> move.date = period1.start_date
     >>> line = move.lines.new()
-    >>> line.account = revenue
+    >>> line.account = donation_account
     >>> line.credit = Decimal(100)
     >>> line.party = party2
     >>> line = move.lines.new()
@@ -140,7 +158,7 @@ Create First Year Move Line Donations::
     >>> move.journal = journal_revenue
     >>> move.date = period1.start_date
     >>> line = move.lines.new()
-    >>> line.account = revenue
+    >>> line.account = donation_account
     >>> line.credit = Decimal(250)
     >>> line.party = party3
     >>> line = move.lines.new()
@@ -160,7 +178,7 @@ Generate First Year 182 Report::
     >>> report.presentation = 'printed'
     >>> report.declarant_nature = '1'
     >>> report.type = 'N'
-    >>> report.accounts.append(revenue)
+    >>> report.accounts.append(donation_account)
     >>> report.click('calculate')
     >>> report.reload()
     >>> report.total_number_of_donor_records
@@ -191,7 +209,7 @@ Create Second Year Move Line Donations::
     >>> move.journal = journal_revenue
     >>> move.date = period2.start_date
     >>> line = move.lines.new()
-    >>> line.account = revenue
+    >>> line.account = donation_account2
     >>> line.credit = Decimal(160)
     >>> line.party = party
     >>> line = move.lines.new()
@@ -205,7 +223,7 @@ Create Second Year Move Line Donations::
     >>> move.journal = journal_revenue
     >>> move.date = period2.start_date
     >>> line = move.lines.new()
-    >>> line.account = revenue
+    >>> line.account = donation_account2
     >>> line.credit = Decimal(100)
     >>> line.party = party2
     >>> line = move.lines.new()
@@ -219,7 +237,7 @@ Create Second Year Move Line Donations::
     >>> move.journal = journal_revenue
     >>> move.date = period2.start_date
     >>> line = move.lines.new()
-    >>> line.account = revenue
+    >>> line.account = donation_account2
     >>> line.credit = Decimal(200)
     >>> line.party = party3
     >>> line = move.lines.new()
@@ -230,8 +248,6 @@ Create Second Year Move Line Donations::
 
 Generate Second Year 182 Report::
 
-    >>> Account = Model.get('account.account')
-    >>> revenue = Account(revenue.id)
     >>> report = Report()
     >>> report.company = company
     >>> report.fiscalyear = fiscalyear2
@@ -239,7 +255,7 @@ Generate Second Year 182 Report::
     >>> report.presentation = 'printed'
     >>> report.declarant_nature = '1'
     >>> report.type = 'N'
-    >>> report.accounts.append(revenue)
+    >>> report.accounts.append(donation_account2)
     >>> report.click('calculate')
     >>> report.reload()
     >>> report.total_number_of_donor_records
@@ -270,7 +286,7 @@ Create Third Year Move Line Donations::
     >>> move.journal = journal_revenue
     >>> move.date = period3.start_date
     >>> line = move.lines.new()
-    >>> line.account = revenue
+    >>> line.account = donation_account3
     >>> line.credit = Decimal(160)
     >>> line.party = party
     >>> line = move.lines.new()
@@ -284,7 +300,7 @@ Create Third Year Move Line Donations::
     >>> move.journal = journal_revenue
     >>> move.date = period3.start_date
     >>> line = move.lines.new()
-    >>> line.account = revenue
+    >>> line.account = donation_account3
     >>> line.credit = Decimal(100)
     >>> line.party = party2
     >>> line = move.lines.new()
@@ -298,7 +314,7 @@ Create Third Year Move Line Donations::
     >>> move.journal = journal_revenue
     >>> move.date = period2.start_date
     >>> line = move.lines.new()
-    >>> line.account = revenue
+    >>> line.account = donation_account3
     >>> line.credit = Decimal(200)
     >>> line.party = party3
     >>> line = move.lines.new()
@@ -309,7 +325,6 @@ Create Third Year Move Line Donations::
 
 Generate Third Year 182 Report::
 
-    >>> revenue = Account(revenue.id)
     >>> report = Report()
     >>> report.company = company
     >>> report.fiscalyear = fiscalyear3
@@ -317,7 +332,7 @@ Generate Third Year 182 Report::
     >>> report.presentation = 'printed'
     >>> report.declarant_nature = '1'
     >>> report.type = 'N'
-    >>> report.accounts.append(revenue)
+    >>> report.accounts.append(donation_account3)
     >>> report.click('calculate')
     >>> report.reload()
     >>> report.total_number_of_donor_records

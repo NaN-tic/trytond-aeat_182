@@ -2,14 +2,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "error:aeat.182.report:"
-msgid "Currency in AEAT 182 report \"%s\" must be Euro."
-msgstr "La moneda del informe AEAT 182 \"%s\" debe ser Euro."
-
-msgctxt "error:aeat.182.report:"
-msgid "Report must be unique by fiscalyear and company"
-msgstr "El informe debe ser único por ejercicio fiscal y compañía"
-
 msgctxt "field:aeat.182.report,accounts:"
 msgid "Accounts"
 msgstr "Cuentas contables"
